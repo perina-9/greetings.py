@@ -1,0 +1,33 @@
+python assignment 3
+def calculated_discount(price, discount_percentage):
+    """
+    Calculates the final price after applying the discount.
+    If the discount percentage is 20% or higher, applies the discount.
+    Otherwise, returns the original price.
+
+    :param price: float, original price of the item
+    :param discount_percentage: float, discount percentage to apply
+    :return: float, final price after discount (if eligible)
+    """
+    if discount_percentage >= 20:
+        discounted_price = price * (1 - discount_percentage / 100)
+        return discounted_price
+    else:
+        return price
+
+if __name__ == "__main__":
+    price = 100  # Fixed original price as requested
+    try:
+        # Prompt user for discount percentage only
+        discount_percentage = float(input("Enter the discount percentage: "))
+
+        # Calculate final price
+        final_price = calculated_discount(price, discount_percentage)
+
+        # Print result
+        if discount_percentage >= 20:
+            print(f"Final price after {discount_percentage}% discount: {final_price:.2f}")
+        else:
+            print(f"No discount applied. Original price: {price:.2f}")
+    except ValueError:
+        print("Please enter a valid numeric value for discount percentage.")

@@ -1,0 +1,52 @@
+class Superhero:
+    def __init__(self, name, power, origin, level):
+        self.name = name
+        self.power = power
+        self.origin = origin
+        self._level = level  # Encapsulated attribute
+
+    def introduce(self):
+        print(f"I am {self.name}, from {self.origin}, and I wield the power of {self.power}!")
+
+    def get_level(self):
+        return self._level
+
+    def set_level(self, new_level):
+        if new_level >= 0:
+            self._level = new_level
+        else:
+            print("Level must be non-negative.")
+
+    def use_power(self):
+        print(f"{self.name} uses {self.power} with intensity level {self._level}!")
+class FlyingHero(Superhero):
+    def __init__(self, name, power, origin, level, flight_speed):
+        super().__init__(name, power, origin, level)
+        self.flight_speed = flight_speed
+
+    def use_power(self):
+        print(f"{self.name} flies at {self.flight_speed} km/h, unleashing {self.power}!")
+# Regular superhero
+hero1 = Superhero("ShadowStrike", "Invisibility", "Nairobi", 7)
+
+# Flying superhero
+hero2 = FlyingHero("SkyBlazer", "Wind Blast", "Mount Kenya", 10, 800)
+
+# Hero named Peris
+peris = FlyingHero("Peris", "Solar Beam", "Kiambu", 12, 950)
+
+# Introductions
+hero1.introduce()
+hero2.introduce()
+peris.introduce()
+
+# Use powers
+hero1.use_power()
+hero2.use_power()
+peris.use_power()
+
+# Encapsulation in action
+print(f"{peris.name}'s current level: {peris.get_level()}")
+peris.set_level(15)
+print(f"{peris.name}'s updated level: {peris.get_level()}")
+
